@@ -1,0 +1,21 @@
+ude <stdio.h>
+#include <stdlib.h>
+char abbname(char n[]);
+int main()
+{
+char n[100];
+printf("enter name of organization(first letter should be capital): ");
+gets(n);
+abbname(n);
+
+    return 0;
+}
+char abbname(char n[])
+{
+    int i;
+    for (i=0;i<strlen(n);i++)
+    {
+        if(n[i]>=65&&n[i]<=90)
+            printf("%c ", n[i]);
+    }
+}
