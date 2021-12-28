@@ -1,0 +1,23 @@
+#include <stdio.h>
+#include <stdlib.h>
+int main()
+{
+    int a , b;
+    int hold;
+    int *p1;
+    printf("enter a\n");
+    scanf("%d",&a);
+    printf("enter b\n");
+    scanf("%d",&b);
+     printf("before swapping numbers are n1 = %d and n2 = %d\n", a,b );
+    p1=&a;
+    hold=b;
+    b=*p1;
+    a=hold;
+    printf("after swapping numbers are n1 = %d and n2 = %d\n", a,b );
+
+
+
+
+}
+
