@@ -1,0 +1,46 @@
+#include <stdio.h>
+#include <stdlib.h>
+#define SIZE 30
+int main()
+{
+    int array[SIZE][SIZE];
+    int c,r,i,j;
+    printf("enter number of rows\n");
+    scanf("%d",&r);
+    printf("enter number of coloumns\n");
+    scanf("%d",&c);
+    for(i=0;i<r;i++)
+    {
+        for(j=0;j<c;j++)
+        {
+            printf("enter element %d%d\n",i,j);
+            scanf("%d",&array[i][j]);
+
+    }
+
+}
+ for(i=0;i<r;i++)
+    {
+        for(j=0;j<c;j++)
+        {
+
+printf("%d\t", array[i][j]);
+
+        }
+        printf("\n");}
+
+
+
+        printf("transpose\n");
+
+         for(i=0;i<c;i++)
+    {
+        for(j=0;j<r;j++)
+        {
+
+printf("%d\t", array[j][i]);
+
+        }
+        printf("\n");}
+
+}
