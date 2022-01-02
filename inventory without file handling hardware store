@@ -1,0 +1,161 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+struct toolswh
+{
+    int srno;
+    char name[30];
+    int qty;
+    float unitprice;
+
+}store[101];
+int x;
+int i;
+void add();
+void del();
+void updtqty();
+void updtup();
+void see();
+
+int main()
+{
+
+
+    store[3].srno=3;
+    strcpy(store[3].name, "Electric Sander");
+    store[3].qty=7;
+    store[3].unitprice=57.98;
+
+    store[17].srno=17;
+    strcpy(store[17].name, "Hammer");
+    store[17].qty=76;
+    store[17].unitprice=11.99;
+
+    store[24].srno=24;
+    strcpy(store[24].name, "Jigsaw");
+    store[24].qty=21;
+    store[24].unitprice=11.00;
+
+    store[39].srno=39;
+    strcpy(store[39].name, "Lawnmower");
+    store[39].qty=3;
+    store[39].unitprice=79.50;
+
+    store[56].srno=56;
+    strcpy(store[56].name, "Powersaw");
+    store[56].qty=18;
+    store[56].unitprice=99.99;
+
+    store[68].srno=68;
+    strcpy(store[68].name, "Screwdriver");
+    store[68].qty=106;
+    store[68].unitprice=6.99;
+
+    store[77].srno=77;
+    strcpy(store[77].name, "sledgehammer");
+    store[77].qty=11;
+    store[77].unitprice=21.50;
+
+    store[83].srno=83;
+    strcpy(store[83].name, "Wrench");
+    store[83].qty=34;
+    store[83].unitprice=7.50;
+    printf("\n\t\t\t****************\n");
+    printf("\n\t\t\t[|  HARDWARE LAB  |]\n");
+    printf("\n\t\t\t****************\n");
+    printf("\n\t\t\t---------------------------\n");
+    printf("\n\t\t\t PRESS 1 TO VIEW RECORD\n");
+    printf("\n\t\t\t PRESS 2 TO ADD RECORD\n");
+    printf("\n\t\t\t PRESS 3 TO UPDATE PRICE\n");
+    printf("\n\t\t\t PRESS 4 TO UPDATE QUANTITY\n");
+    printf("\n\t\t\t PRESS 5 TO DELETE RECORD\n");
+    printf("\n\t\t\t ENTER 0 EXIT STORE\n");
+    printf("\n\t\t\t---------------------------\n");
+    int choice=1;
+    while(choice!=0){
+    printf("\n\t\t\tCHOOSE WHAT YOU WANT TO DO FROM MENU AND ENTER YOUR CHOICE : ");
+    scanf("%d",&choice);
+
+    switch(choice)
+    {
+    case 1:
+        see();
+    break;
+    case 2:
+        add();
+    break;
+    case 3:
+        updtup();
+    break;
+    case 4:
+        updtqty();
+    break;
+    case 5:
+        del();
+    break;
+
+    }}
+
+    return 0;
+}
+
+void add()
+{
+
+  printf("\t\t\tENTER RECORD NO. : ");
+  scanf("%d",&x);
+  store[x].srno=x;
+  printf("\t\t\tENTER TOOL NAME: : ");
+  fflush(stdin);
+  gets(store[x].name);
+  printf("\t\t\tENTER QUANTITY : ");
+  scanf("%d",&store[x].qty);
+  printf("\t\t\tENTER UNIT PRICE : ");
+  scanf("%f",&store[x].unitprice);
+  printf("\n\t\t\tRECORD HAS BEEN ADDED");
+}
+void del()
+{
+  printf("\t\t\tENTER RECORD NO. OF TOOL YOU WANT TO DELETE :");
+  scanf("%d",&x);
+  store[x].srno=0;
+  strcpy(store[x].name, "\0");
+  store[x].qty=0;
+  store[x].unitprice=0;
+
+  printf("\n\t\t\tRECORD HAS BEEN DELETED");
+}
+void updtqty()
+{
+    printf("\t\t\tENTER RECORD NO. OF TOOL YOU WANT TO CHANGE QUANTITY OF:");
+    scanf("%d",&x);
+    printf("\t\t\tENTER NEW QUANTITY: :");
+    scanf("%d",&store[x].qty);
+    printf("\t\t\tQUANTITY OF %d UPDATED", store[x].qty);
+}
+
+void updtup()
+{
+    printf("\t\t\tENTER RECORD NO. OF TOOL YOU WANT TO CHANGE PRICE OF:");
+    scanf("%d",&x);
+    printf("\t\t\tENTER  NEW UNIT PRICE :");
+    scanf("%f",&store[x].unitprice);
+    printf("\t\t\tITEM PRICED AGAIN :");
+}
+void see()
+{
+
+    printf("\t\t ------------------------------------------------------------------\n");
+    printf("\t\t || %-15s%-20s%-15s%-10s ||\n", "Record No.", " Tool Name", "Quantity", "Unit Price");
+    printf("\t\t ------------------------------------------------------------------\n");
+    for(i=1;i<=100;i++)
+    {
+        if(store[i].srno!=0)
+        {
+            printf("\t\t\t%-10d%-20s\t %-10d%\t$%-10.2f\n", store[i].srno, store[i].name, store[i].qty, store[i].unitprice);
+        }
+    }
+    printf("\n\t\t\tENTER ANY CHARACTER TO SELECT AGAIN");
+    getch();
+}
