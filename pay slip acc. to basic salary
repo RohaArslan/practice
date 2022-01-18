@@ -1,0 +1,186 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+//declaring variables
+
+int BS,HRA,MA,DA,TA,TAX,UB,TOTALPAY;
+
+//first we will take basic salary, as an input from the user
+
+printf("ENTER YOUR BASIC SALARY:  ");
+scanf("%d", &BS);
+
+//DISPLAYING FORMAT
+printf("\n________________________________________________________________\n");
+printf("\nTOTAL PAY :\n");
+printf("\n_____________________\n");
+
+/*
+now we will calculate the TOTAL PAY using the given condition for each of the basic salary range
+conditions are:
+If basic salary is less than 50000,
+
+House Rent Allowance (HRA) = 3% of BS
+
+Medical Allowance (MA) = 2% of BS
+
+Daily Allowance (DA) =2% of BS
+
+Traveling Allowance (TA) =1% of BS
+
+Tax =0.5% of B.S
+
+Utility bills (UB) = 4% of B.S
+
+If BS is between 50000 and 100000 inclusive
+
+House Rent Allowance (HRA) = 5% of BS
+
+Medical Allowance (MA) = 3% of BS
+
+Daily Allowance (DA) =3% of BS
+
+Traveling Allowance (TA) =2% of BS
+
+Tax =2% of B.S
+
+Utility bills (UB) = 4% of B.S
+
+If BS is greater than 100000, then
+
+House Rent Allowance (HRA) = 4% of BS
+
+Medical Allowance (MA) = 7% of BS
+
+Daily Allowance (DA) =4% of BS
+
+Traveling Allowance (TA) =3% of BS
+
+Tax =3% of B.S
+
+Utility bills (UB) = 10% of B.S
+
+TotalSalary = BS+HRA+MA+DA+TA-Tax-UB
+*/
+
+if(BS<50000)
+{
+
+    printf("_____________________\n");
+    printf("\n\nALLOWANCES\n");
+    printf("_____________________\n");
+
+
+    HRA=0.03*BS;
+    printf("HOUSE RENT ALLOWANCE(HRA) : \t\t %d\n\n",HRA);
+    MA=0.02*BS;
+    printf("MEDICAL ALLOWANCE(MA) : \t\t %d\n\n",MA);
+    DA=0.02*BS;
+    printf("DAILY ALLOWANCE(DA) : \t\t\t %d\n\n",DA);
+    TA=0.01*BS;
+    printf("TRAVELING ALLOWANCE(TA) : \t\t %d\n\n",TA);
+
+    printf("_____________________\n");
+    printf("\n\nDEDUCTIONS\n\n");
+    printf("_____________________\n");
+
+
+    TAX=0.005*BS;
+    printf("TAX : \t\t\t\t\t %d\n\n",TAX);
+    UB=0.04*BS;
+    printf("UTILITY BILLS(UB) :  \t\t\t %d\n\n",UB);
+
+    printf("_____________________\n");
+    printf("\n\nNET PAY\n\n");
+    printf("_____________________\n\n");
+
+    TOTALPAY=BS+HRA+MA+DA+TA-TAX-UB;
+    printf("TOTAL PAY : \t\t\t\t %d\n\n",TOTALPAY);
+}
+
+
+//for second range from 50000 to 100000
+
+ else if(BS>=50000&&BS<=100000)
+{
+
+    printf("_____________________\n");
+    printf("\n\nALLOWANCES\n");
+    printf("_____________________\n");
+
+
+    HRA=0.05*BS;
+    printf("HOUSE RENT ALLOWANCE(HRA) : \t\t %d\n\n",HRA);
+    MA=0.03*BS;
+    printf("MEDICAL ALLOWANCE(MA) : \t\t %d\n\n",MA);
+    DA=0.03*BS;
+    printf("DAILY ALLOWANCE(DA) : \t\t\t %d\n\n",DA);
+    TA=0.02*BS;
+    printf("TRAVELING ALLOWANCE(TA) : \t\t %d\n\n",TA);
+
+    printf("_____________________\n");
+    printf("\n\nDEDUCTIONS\n\n");
+    printf("_____________________\n");
+
+
+    TAX=0.02*BS;
+    printf("TAX : \t\t\t\t\t %d\n\n",TAX);
+    UB=0.04*BS;
+    printf("UTILITY BILLS(UB) :  \t\t\t %d\n\n",UB);
+
+    printf("_____________________\n");
+    printf("\n\nNET PAY\n\n");
+    printf("_____________________\n\n");
+
+    TOTALPAY=BS+HRA+MA+DA+TA-TAX-UB;
+    printf("TOTAL PAY : \t\t\t\t %d\n\n",TOTALPAY);
+}
+
+//for the third range for containing basic pay of more than 100000
+
+
+
+else if(BS>100000)
+{
+
+    printf("_____________________\n");
+    printf("\n\nALLOWANCES\n");
+    printf("_____________________\n");
+
+
+    HRA=0.04*BS;
+    printf("HOUSE RENT ALLOWANCE(HRA) : \t\t %d\n\n",HRA);
+    MA=0.07*BS;
+    printf("MEDICAL ALLOWANCE(MA) : \t\t %d\n\n",MA);
+    DA=0.04*BS;
+    printf("DAILY ALLOWANCE(DA) : \t\t\t %d\n\n",DA);
+    TA=0.03*BS;
+    printf("TRAVELING ALLOWANCE(TA) : \t\t %d\n\n",TA);
+
+    printf("_____________________\n");
+    printf("\n\nDEDUCTIONS\n\n");
+    printf("_____________________\n");
+
+
+    TAX=0.03*BS;
+    printf("TAX : \t\t\t\t\t %d\n\n",TAX);
+    UB=0.10*BS;
+    printf("UTILITY BILLS(UB) :  \t\t\t %d\n\n",UB);
+
+    printf("_____________________\n");
+    printf("\n\nNET PAY\n\n");
+    printf("_____________________\n\n");
+
+    TOTALPAY=BS+HRA+MA+DA+TA-TAX-UB;
+    printf("TOTAL PAY : \t\t\t\t %d\n\n",TOTALPAY);
+}
+
+
+
+//end of program!
+
+
+    return 0;
+}
