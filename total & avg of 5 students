@@ -1,0 +1,79 @@
+#include <stdio.h>
+#include <stdlib.h>
+//function prototypes
+void getmarks(int *marks,int size);
+int totalmarks(int *marks, int size);
+void printmarks(int *marks, int size);
+
+//main function
+int main()
+{
+char c;
+    do
+{
+
+int total, size = 5;
+float avg;
+    //intializing marks array of size 5
+int marks[size];
+    //calling functions
+    getmarks(marks,size);
+    printmarks(marks,size);
+    total = totalmarks(marks,size);
+    //layout
+    printf("TOTAL MARKS OF STUDENT IS : %d\n\n",total);
+    printf("________________________\n");
+    //calculate average
+    avg=total/size;
+    printf("AVERAGE IS : %.2f\n\n",avg);
+    //display loop condtition
+    printf("ENTER R TO REPEAT THE PROCESS \nOR ANY OTHER KEY TO EXIT!\n");
+    c = getch();
+    printf("\n\n");
+}
+    while((c=='r')||(c=='R'));
+return 0;
+//end of main
+}
+
+//functions
+//function to get marks from user
+void getmarks(int *marks,int size)
+{
+int i;
+    printf("________________________\n");
+    printf("\nCALCULATE TOTAL & AVERAGE MARKS OF 5 SUBJECTS OF A STUDENT!\n"),
+     printf("________________________\n");
+    for(i=0;i<size;i++)
+{
+        printf("ENTER MARKS OF SUBJECT %d : ",i+1);
+        scanf("%d", marks);
+        marks++;
+}
+}
+//function to show marks to the user
+void printmarks(int *marks, int size)
+{
+int i;
+    printf("________________________\n");
+    for(i=0;i<size;i++)
+{
+        printf("MARKS OF SUBJECT %d is : %d\n\n",i+1, *marks);
+        marks++;
+}
+}
+
+//function to calculate total marks
+ int totalmarks(int *marks, int size)
+ {
+int total, i;
+     total = *marks;
+      printf("________________________\n");
+     for(i=0;i<size;i++)
+{
+        marks++;
+        total = total + *marks;
+
+}
+return total;
+ }
