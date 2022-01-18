@@ -1,0 +1,254 @@
+//start of program to make a pay slip generator
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+
+//declaring variables, that we will use in this program
+int age,exp,BS,RP,HRA,SSB,ARA,GP,IT,TD,AI,GPF,NP;
+char grade;
+
+//before calculating we will take input from the user, in this program only four grades are used W,X,Y,Z
+
+printf("Enter Your Designated Grade : ");
+scanf("%c", &grade);
+printf("Enter Your Age( rounded of to the nearest whole number ) : ");
+scanf("%d", &age);
+printf("Enter Your Experience (In Years) : ");
+scanf("%d", &exp);
+
+//DISPLAYING FORMAT
+printf("\n________________________________________________________________\n");
+printf("\nBASIC PAY\n");
+printf("\n_____________________\n");
+/*
+now we will use the data provided to us
+& the data we have to calculate the running pay with the help of number of increments & per-increment amount taking exp=no. of increment
+according to formula (1000+(exp*per-increment amount))
+per-increment amounts and basic pay according to grades are:
+Basic salary
+Per-increment amount
+W
+PKR 10000/-
+PKR 700/-
+X
+PKR 12900/-
+PKR 910/-
+Y
+PKR 21700/-
+PKR 1500/-
+Z
+PKR 32600/-
+PKR 2800/-
+
+
+*/
+
+//FOR W or w
+
+if(grade=='W'||grade=='w')
+{
+    BS=10000;
+
+    printf("\nBASIC SALARY: \t\t\t\t  %d\n ",BS);
+
+    RP=10000+(exp*700);
+    printf("\nNUMBER OF INCREMENTS: \t\t\t  %d\n",exp);
+    printf("\nRUNNING PAY: \t\t\t\t  %d",RP);
+}
+//FOR X or x
+else if(grade=='X'||grade=='x')
+{
+    BS = 12900;
+
+    printf("\nBASIC SALARY: \t\t\t\t  %d\n ",BS);
+
+    RP = BS+(exp*910);
+    printf("\nNUMBER OF INCREMENTS: \t\t\t  %d\n",exp);
+    printf("\nRUNNING PAY: \t\t\t\t  %d",RP);
+}
+//FOR Y or y
+else if(grade=='Y'||grade=='y')
+{
+    BS = 21700;
+
+    printf("\nBASIC SALARY: \t\t\t\t  %d\n ",BS);
+
+    RP = BS+(exp*1500);
+    printf("\nNUMBER OF INCREMENTS: \t\t\t  %d\n",exp);
+    printf("\nRUNNING PAY: \t\t\t\t  %d",RP);
+}
+//FOR Z or z
+else if(grade=='Z'||grade=='z')
+{
+    BS =32600;
+
+    printf("\nBASIC SALARY: \t\t\t\t  %d\n ",BS);
+
+    RP = BS+(exp*2800);
+    printf("\nNUMBER OF INCREMENTS: \t\t\t  %d\n",exp);
+    printf("\nRUNNING PAY: \t\t\t\t  %d\n",RP);
+}
+
+
+/*
+now we will compute the following allowances according to the data:
+1) House rent allowance (HRA):
+HRA is computed as 45% of running pay (RP).
+2) Social Security Benefit (SSB):
+SSB is computed as 30% of basic salary (BS).
+3) Ad-hoc relief allowance (ARA):
+A fixed amount of PKR 3000/- is given to employees with grade ‘W or w’ having more than 3 years of experience, but not younger than 30 years. In case of other grades, a fixed amount of PKR 1500/- is given to employees older than 40 years.
+*/
+printf("_____________________\n");
+printf("\n\nALLOWANCES\n");
+printf("_____________________\n");
+
+HRA=0.45*RP;
+printf("HOUSE RENT ALLOWANCE: \t\t\t  %d\n",HRA);
+SSB=0.30*BS;
+printf("SOCIAL SECURITY BENIFIT: \t\t  %d\n",SSB);
+ //NOW WE WILL COMPUTE AD-HOC RELIEF ALLOWANCE, WITH THE PROVIDED RESTRICTIONS
+
+
+
+
+
+if(grade='W'||'w'&&exp>3&&age>30)
+{
+    ARA=3000;
+    printf("ADHOC RELIEF ALLOWANCE: \t\t  %d\n",ARA);
+}
+else if('X'||'x'||'Y'||'y'||'Z'||'z'&&age>40)
+{
+    ARA=1500;
+    printf("ADHOC RELIEF ALLOWANCE: \t\t  %d\n",ARA);
+}
+
+/*
+Gross pay (GP) is computed by summing up RP and all the allowances.
+GP=RP+HRA+SSB+ARA
+*/
+
+GP=RP+HRA+SSB+ARA;
+printf("\nGROSS PAY: \t\t\t\t  %d\n",GP);
+/*
+NOW WE WILL COMPUTE THE FOLLOWING DEDUCTIONS
+*/
+printf("_____________________\n");
+printf("\n\nDEDUCTIONS\n");
+printf("_____________________\n");
+/*
+INCOME TAX: IT
+AND
+GENERAL PROVIDENT FUND: GPF
+*/
+
+/*
+FIRST FOR INCOME TAX:
+
+IT is deducted using following rules for annual income.
+The annual income is computed by multiplying the gross pay (GP) with 12.
+AI=GP*12
+WE WILL COMPUTE THE INCOME TAX IN ACCORDANCE WITH THE GIVEN RATES
+PROVIDED FOR THE LIMITS IN WHICH the COMPUTED ANNUAL INCOME:AI WILL FALL
+
+Lower limit:  PKR 0/-
+Upper limit: PKR 400,000/-
+(% of gross pay):0
+Lower limit: PKR 400,001/-
+Upper limit: PKR 650,000/-
+% of gross pay):2.5
+Lower limit: PKR 650,001/-
+Upper limit: PKR 1,000,000/-
+(% of gross pay):4.75
+Lower limit: PKR 1,000,001/-
+Upper limit: PKR 1,500,000/-
+(% of gross pay):7
+Lower limit: PKR 1,500,001/-
+Upper limit: ∞
+(% of gross pay):11.5
+
+*/
+
+//for annual income
+AI=GP*12;
+
+
+
+if(AI>=0&&AI<=400000)
+{
+        IT = 0*AI;
+        printf("INCOME TAX (at 0%%):  \t\t  %d\n",IT);
+}
+else if(AI>=400001&&AI<=650000)
+{
+    IT = 0.025*AI;
+    printf("INCOME TAX (at 2.5%%):  \t\t  %d\n",IT);
+}
+else if(AI>=650001&&AI<=1000000)
+{
+        IT = 0.0475*AI;
+        printf("INCOME TAX (at 4.75%%):   \t\t  %d\n",IT);
+}
+else if(AI>=1000001&&AI<=1500000)
+{
+        IT = 0.07*AI;
+        printf("INCOME TAX (at 7%%):  \t\t  %d\n",IT);
+}
+else if(AI>=1500001)
+{
+        IT = 0.115*AI;
+        printf("INCOME TAX (at 11.5%%):  \t\t  %d\n",IT);
+}
+
+
+/*
+FOR COMPUTING GPF WE WILL USE THE FOLLOWING FORMULA:
+General Provident Fund (GPF) = 10% of Gross pay
+*/
+
+GPF=0.1*GP;
+printf("GENERAL PROVIDENT FUND: \t\t  %d\n",GPF);
+
+/*
+NOW WE WILL COMPUTE THE TOTAL DEDUCTIONS:TD
+AS, TD=IT+GPF
+*/
+
+TD=IT+GPF;
+printf("TOTAL DEDUCTIONS: \t\t\t  %d\n",TD);
+
+/*
+NOW WE WILL COMPUTE THE NET PAY:
+which is computed by subtracting deductions from gross pay as:
+NP=GP-TD
+*/
+
+NP=GP-TD;
+printf("NET PAY: \t\t\t\t  %d\n",NP);
+
+/*
+NOW THE OUTPUT WILL BE  DISPLAYED IN THE FOLLOWING ORDER
+
+1)BASIC SALARY
+2)NUMBER OF INCREMENTS
+3)RUNNING PAY
+4)ALLOWANCES:
+HOUSE RENT ALLOWANCE
+SOCIAL SECURITY BENIFIT
+AD-HOC RELIEF ALLOWANCE
+5)GROSS PAY
+6)DEDUCTIONS:
+INCOME TAX
+GENERAL PROVIDENT FUND
+7)TOTAL DEDUCTIONS
+8)NET PAY
+*/
+
+// end of program
+
+return 0;
+}
+
