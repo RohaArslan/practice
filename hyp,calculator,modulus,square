@@ -1,0 +1,132 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+//function prototypes
+double hypo(double a, double b);
+void small(int a, int b, int c);
+void sum(int a, int b);
+void multi(int a, int b);
+double d(double a, double b);
+void diff(int a, int b);
+void modulus(int a, int b);
+
+int main(){
+while(1)
+{
+
+
+    int val, num3, num4, num5;
+    double num1, num2, h;
+    printf("\n____________________");
+    printf("\n\n1 = Find Hypotenuse");
+    printf("\n2 = Find Smallest Value");
+    printf("\n3 = Find Sum of Two Values");
+    printf("\n4 = Find Multiplication of Two Values");
+    printf("\n5 = Find Division of Two Values");
+    printf("\n6 = Find Difference of Two Values");
+    printf("\n7 = Find Modulus of Two Values");
+    printf("\n0 to exit");
+    printf("\n____________________");
+    printf("\n\n Enter Your Choice : ");
+    scanf("%d", &val);
+    printf("\n____________________");
+
+    switch(val){
+        case 1:
+            printf("\n\nEnter 1st Number : ");
+            scanf("%lf", &num1);
+            printf("\nEnter 2nd Number : ");
+            scanf("%lf", &num2);
+            hypo(num1, num2);
+            printf("The hypotenuse of given sides of a triangle : %d", h);
+            break;
+        case 2:
+            printf("\n\nEnter 1st Number : ");
+            scanf("%d", &num3);
+            printf("\n\nEnter 2nd Number : ");
+            scanf("%d", &num4);
+            printf("\n\nEnter 3rd Number : ");
+            scanf("%d", &num5);
+            small(num3, num4, num5);
+            break;
+        case 3:
+            printf("\n\nEnter 1st Number : ");
+            scanf("%d", &num3);
+            printf("\nEnter 2nd Number : ");
+            scanf("%d", &num4);
+            sum(num3, num4);
+            break;
+        case 4:
+            printf("\n\nEnter 1st Number : ");
+            scanf("%d", &num3);
+            printf("\nEnter 2nd Number : ");
+            scanf("%d", &num4);
+            multi(num3, num4);
+            break;
+        case 5:
+            printf("\n\nEnter 1st Number : ");
+            scanf("%d", &num1);
+            printf("\nEnter 2nd Number : ");
+            scanf("%d", &num2);
+            d(num1, num2);
+            break;
+        case 6:
+            printf("\n\nEnter 1st Number : ");
+            scanf("%d", &num3);
+            printf("\nEnter 2nd Number : ");
+            scanf("%d", &num4);
+
+            diff(num3, num4);
+            break;
+        case 7:
+            printf("\n\nEnter 1st Number : ");
+            scanf("%d", &num3);
+            printf("\nEnter 2nd Number : ");
+            scanf("%d", &num4);
+            modulus(num3, num4);
+            break;
+            default:
+            exit(1);
+    }
+}
+    return 0;
+}
+//functions
+
+double hypo(double a, double b)
+{
+    double h;
+   h=sqrt((a*a)+(b*b));
+}
+void small(int a, int b, int c){
+
+    if(a<b && a<c){
+        printf("\n%d is smallest.", a);
+    }
+    else if(b<a && b<c){
+        printf("\n%d is smallest.", b);
+    }
+    else if(c<a && c<b){
+        printf("\n%d is smallest.", c);
+    }
+}
+void sum(int a, int b){
+
+    printf("\nSum of %d and %d is %d", a, b, a+b);
+}
+void multi(int a, int b){
+    printf("\nMultiplication of %d and %d is %d", a, b, a*b);
+}
+double d(double a, double b){
+
+    printf("\nDivision of %d and %d is %lf", a, b, a/b);
+}
+void diff(int a, int b)
+{
+    printf("\nDifference of %d and %d is %d ",a, b, a-b);
+}
+void modulus(int a, int b)
+{
+    printf("\nModulus of %d and %d is %d",a,b, a%b);
+}
+//end of program
