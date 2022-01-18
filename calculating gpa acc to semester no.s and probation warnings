@@ -1,0 +1,197 @@
+#include <stdio.h>
+
+int main(){
+//declaring variables
+int NoSem, NoSub=0, CH, i, j, mrk;
+float GPAS, GPA=4, CP, TCP = 0, TCH;
+//getting no of semesters
+    printf("Enter number of Semester : ");
+    scanf("%d", &NoSem);
+while(NoSem<1||NoSem>8){
+        printf("INVALID INPUT : Enter number of Semester : ");
+        scanf("%d", &NoSem);
+    }
+//getting no of subjects studied in the semester
+for(i=1; i<=NoSem; i++){
+        printf("How many subjects you have studied in  Semester %d : ", i);
+        scanf("%d", &NoSub);
+while(NoSub<1||NoSub>7){
+            printf("How many subjects you have studied in  Semester %d : ", i);
+            scanf("%d", &NoSub);
+        }
+//getting marks of subjects
+            printf("\n___________________");
+            printf("\n Semester %d", i);
+            printf("\nEnter Marks of Subject or Enter -1 to Terminate");
+for(j=1; j<=NoSub; j++){
+            printf("\n___________________");
+            printf("\nEnter Marks of Subject %d : ", j);
+            scanf("%d", &mrk);
+            printf("\nSubject : %d", NoSub);
+//calculating credit point, gpa and grade
+if(mrk>=0 && mrk<50){
+                CP = 0;
+                printf("\tMarks : %d", mrk);
+                printf("\tGPA : %.2f", CP);
+                printf("\tGrade : F");
+            }
+else if(mrk<-1 || mrk>100 || mrk==50){
+                CP = 0.10;
+                mrk = 50;
+                printf("\tMarks : %d", mrk);
+                printf("\tGPA : %.2f", CP);
+                printf("\tGrade : D");
+            }
+else if(mrk>50 && mrk <=53){
+                CP = 1.00;
+                printf("\tMarks : %d", mrk);
+                printf("\tGPA : %.2f", CP);
+                printf("\tGrade : D");
+            }
+else if(mrk==54){
+                CP = 1.01;
+                printf("\tMarks : %d", mrk);
+                printf("\tGPA : %.2f", CP);
+                printf("\tGrade : D+");
+            }
+else if(mrk>54 && mrk <=57){
+                CP = 1.30;
+                printf("\tMarks : %d", mrk);
+                printf("\tGPA : %.2f", CP);
+                printf("\tGrade : D+");
+            }
+else if(mrk==58){
+                CP = 1.31;
+                printf("\tMarks : %d", mrk);
+                printf("\tGPA : %.2f", CP);
+                printf("\tGrade : C-");
+            }
+else if(mrk>58 && mrk <=60){
+                CP = 1.66;
+                printf("\tMarks : %d", mrk);
+                printf("\tGPA : %.2f", CP);
+                printf("\tGrade : C-");
+            }
+else if(mrk==61){
+                CP = 1.67;
+                printf("\tMarks : %d", mrk);
+                printf("\tGPA : %.2f", CP);
+                printf("\tGrade : C");
+            }
+else if(mrk>61 && mrk<=63){
+                CP = 2.00;
+                printf("\tMarks : %d", mrk);
+                printf("\tGPA : %.2f", CP);
+                printf("\tGrade : C");
+            }
+else if(mrk==64){
+                CP = 2.01;
+                printf("\tMarks : %d", mrk);
+                printf("\tGPA : %.2f", CP);
+                printf("\tGrade : C+");
+            }
+else if(mrk>64 && mrk<=67){
+                CP = 2.33;
+                printf("\tMarks : %d", mrk);
+                printf("\tGPA : %.2f", CP);
+                printf("\tGrade : C+");
+            }
+else if(mrk==68){
+                CP = 2.34;
+                printf("\tMarks : %d", mrk);
+                printf("\tGPA : %.2f", CP);
+                printf("\tGrade : B-");
+            }
+else if(mrk>68 && mrk<=70){
+                CP = 2.66;
+                printf("\tMarks = %d", mrk);
+                printf("\tCredit Points : %.2f", CP);
+                printf("\tGrade = B-");
+            }
+else if(mrk==71){
+                CP = 2.67;
+                printf("\tMarks = %d", mrk);
+                printf("\tCredit Points : %.2f", CP);
+                printf("\tGrade = B");
+            }
+else if(mrk>71 && mrk<=74){
+                CP = 3.00;
+                printf("\tMarks = %d", mrk);
+                printf("\tCredit Points : %.2f", CP);
+                printf("\tGrade = B");
+            }
+else if(mrk==75){
+                CP = 3.01;
+                printf("\tMarks = %d", mrk);
+                printf("\tCredit Points : %.2f", CP);
+                printf("\tGrade = B+");
+            }
+else if(mrk>75 && mrk<=79){
+                CP = 3.33;
+                printf("\tMarks = %d", mrk);
+                printf("\tCredit Points : %.2f", CP);
+                printf("\tGrade = B+");
+            }
+else if(mrk==80){
+                CP = 3.34;
+                printf("\tMarks = %d", mrk);
+                printf("\tCredit Points : %.2f", CP);
+                printf("\tGrade = A-");
+            }
+else if(mrk>80 && mrk<=84){
+                CP = 3.66;
+                printf("\tMarks = %d", mrk);
+                printf("\tCredit Points : %.2f", CP);
+                printf("\tGrade = A-");
+            }
+else if(mrk>=85 && mrk<=90){
+                CP = 3.67;
+                printf("\tMarks = %d", mrk);
+                printf("\tCredit Points : %.2f", CP);
+                printf("\tGrade = A");
+            }
+else if(mrk>=91 && mrk<=100){
+                CP = 4.00;
+                printf("\tMarks = %d", mrk);
+                printf("\tCredit Points : %.2f", CP);
+                printf("\tGrade = A");
+            }
+ else if(mrk==-1){
+break;
+            }
+            TCP = TCP+CP*4;
+            TCH = 4*j;
+        }
+//analyzing the inputs and declaring the results and if needed a probation warning
+        printf("\n___________________");
+        printf("\n\nSemester Result");
+        printf("\n_______________");
+        GPAS = (TCP)/(TCH);
+        printf("\nTotal Credit Points = %.2f", TCP);
+        printf("\nTotal Credit Hour = %.2f", TCH);
+        printf("\nGPA of %d semester = %.2f\n\n", i, GPAS);
+        TCP = 0;
+        if(GPA<2 && GPAS<2 && i<=5){
+            printf("\nStudent Status");
+            printf("\n_______________");
+            printf("\nDanger ! You are in probation... You need to drop, Better Luck Next Time!...\n\n");
+            break;
+        }
+        else if(GPA<2 && GPAS<2 && i>=5){
+            printf("\nStudent Status");
+            printf("\n_______________");
+            printf("\nDanger ! You are in probation... You need to Repeat a semester, GOOD LUCK...\n\n");
+            break;
+        }
+        else if(GPAS<2){
+            printf("\nStudent Status");
+            printf("\n_______________");
+            printf("\nDanger ! You are in probation, TRY HARDER!...\n\n");
+        }
+
+        GPA = GPAS;
+    }
+
+    return 0;
+}
+//end of program
