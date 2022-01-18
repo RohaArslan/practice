@@ -1,0 +1,718 @@
+//CALENDAR project semester #1 2021
+//ROHA ARSLAN (FA21-BSE-116)
+//AIMAH SIDDIQUE (FA21-BSE-092)
+
+#include<stdio.h>
+#include<conio.h>
+#include<stdlib.h>
+struct Reminder{
+                                                          //creating structure for reminder function
+       int enumber;
+       char date[12];
+       char event[30];
+}a;
+
+
+
+  int m, n;
+  FILE *fp;
+  FILE *fp2;                                                                //initializing global variables and file pointers
+
+int  daynumber(int day,int month, int year){
+
+    static int t[] = { 0, 3, 2, 5, 0, 3,                   //sakamoto algorithm
+                       5, 1, 4, 6, 2, 4 };
+    year -= month < 3;
+    return (year + year / 4                                //tells us about the day of the week on a specific date
+            - year / 100
+            + year / 400
+            + t[month - 1] + day)
+           % 7;
+
+}
+
+int  totaldays(int month,int year){
+   int days;
+   switch(month){
+                                                           //function to display total days in a month of a certain year
+  case 1:
+  case 3:
+  case 5:
+  case 7:
+  case 8:
+  case 10:
+  case 12:
+        (days=31);
+        break;
+  case 4:
+  case 6:
+  case 9:
+  case 11:
+        days=30;
+        break;
+
+  case 2:
+       if(year%4==0){
+        days=29;
+//leap year
+        break;
+       }
+       else { days= 28;
+          break;
+       }
+   }
+
+    return days;
+}
+
+char*monthname(int i){
+
+  switch(i){
+
+      char* m;                                              //function to determine month name  is using month number
+
+  case 1:
+    m="January";
+    break;
+  case 2:
+    m="Februray";
+     break;
+  case 3:
+    m= "March";
+     break;
+  case 4:
+    m= "April";
+     break;
+  case 5:
+    m= "May";
+     break;
+  case 6:
+    m="June";
+     break;
+  case 7:
+    m="July";
+     break;
+  case 8:
+   m= "August";
+    break;
+  case 9:
+    m="September";
+     break;
+  case 10:
+    m= "October";
+     break;
+  case 11:
+    m= "November";
+     break;
+  case 12:
+    m= "December";
+     break;
+   return m;
+  }
+
+
+
+
+
+}
+
+void calender_month(int month,int year){
+   system("cls");
+   int Totaldays,DAY;
+
+    printf("\n\n\t\t\t\t\t     Use a to go to previous month");
+    printf("\n\t\t\t\t\t        Use d to go to next month");
+    printf("\n\t\t\t\t\t      Use w to go to previous year");
+    printf("\n\t\t\t\t\t        Use s to go to next year");
+    printf("\n\t\t\t\t\t      Press Esc to go to main menu");
+
+    printf("\n\n\n\t\t\t\t\t\t     YEAR-%d",year);
+    printf("\n\t\t\t\t\t\t    ===========");
+
+    DAY=daynumber(1,month,year);                                       //determining day of week using daynumber function
+
+
+    int i;
+    for(i=1;i<2;i++){
+
+          Totaldays=totaldays(month,year);                             //determining no. of days in a certain month
+
+          printf(" \n\t\t\t\t\t\t      %s",monthname(month));
+          printf("\n\t\t\t\t\t------------------------------------\n");
+          printf("\t\t\t\t\t  SUN  MON  TUE  WED   THU  FRI  SAT\n");
+          printf("\t\t\t\t\t------------------------------------\n");
+
+          int k;
+          printf("\t\t\t\t\t");
+          for(k=0;k<DAY;k++)
+                 printf("     ");                                       //printing spaces for first line of calender of each month
+
+     int j;
+     for(j=1;j<=Totaldays;j++){                                         //for loop for printing dates
+
+                printf("%5d",j);
+
+          if(++k>6){                                                    //moving to next line when days=7
+
+             k=0;
+             printf("\n\t\t\t\t\t");
+}
+}
+
+
+    if(0){
+
+        printf("\n\t\t\t\t\t");
+    }
+
+    DAY=k;
+        printf("\n\t\t\t\t\t------------------------------------\n");
+}
+
+
+    char choice=1;
+    while (choice!=27){                                                   //using switch cases for navigation
+
+        choice= getch();
+
+    //start of cases====================================================================================================================
+    switch(choice){
+
+    case  100:                                                            //case for moving to next month using d
+    case 68:
+
+
+    system("cls");
+    printf("\n\n\t\t\t\t\t     Use a to go to previous month");
+    printf("\n\t\t\t\t\t        Use d to go to next month");
+    printf("\n\t\t\t\t\t      Use w to go to previous year");
+    printf("\n\t\t\t\t\t        Use s to go to next year");
+    printf("\n\t\t\t\t\t      Press Esc to go to main menu");
+      for(i=0;i<1;i++){
+           month = month+1;                                               //adding 1 to month number
+
+           if(month>12){
+                month=1;                                                  //moving to next year if month becomes >than 12
+                year=year+1;
+
+           }}
+            printf("\n\n\n\t\t\t\t\t\t     YEAR-%d",year);
+            printf("\n\t\t\t\t\t\t    ===========");
+           DAY=daynumber(1,month,year);                                   //determining day of week using daynumber function
+
+    int i;
+    for(i=1;i<2;i++){
+
+           Totaldays=totaldays(month,year);                               //determining no. of days in a certain month
+    printf(" \n      \t\t\t\t\t\t      %s",monthname(month));
+    printf("\n\t\t\t\t\t------------------------------------\n");
+    printf("\t\t\t\t\t  SUN  MON  TUE  WED   THU  FRI  SAT\n");
+    printf("\t\t\t\t\t------------------------------------\n");
+
+    int k;
+    printf("\t\t\t\t\t");
+    for(k=0;k<DAY;k++)
+
+       printf("     ");                                                    //printing spaces for first line of calender of each month
+    int j;
+    for(j=1;j<=Totaldays;j++){
+
+        printf("%5d",j);                                                   //for loop for printing dates
+
+        if(++k>6){                                                         //moving to next line when days=7
+
+            k=0;
+            printf("\n\t\t\t\t\t");
+
+    }
+    }
+
+
+    if(0){
+
+        printf("\n\t\t\t\t\t");
+    }
+    DAY=k;
+
+}
+    printf("\n\t\t\t\t\t------------------------------------\n");
+    break;
+
+   //end of case======================================================================================================================
+
+   case 97:
+   case 65:                                                                //case for moving to previous month using a
+
+    system("cls");
+    printf("\n\n\t\t\t\t\t     Use a to go to previous month");
+    printf("\n\t\t\t\t\t        Use d to go to next month");
+    printf("\n\t\t\t\t\t      Use w to go to previous year");
+    printf("\n\t\t\t\t\t        Use s to go to next year");
+    printf("\n\t\t\t\t\t      Press Esc to go to main menu");
+
+           month= month-1;                                                  //subtracting 1 from month number
+
+           if(month<1){                                                     //moving to previous year if month becomes less than 1
+
+             month=12;
+             year=year-1;
+}
+
+    printf("\n\n\n\t\t\t\t\t\t     YEAR-%d",year);
+    printf("\n\t\t\t\t\t\t    ===========");
+
+    DAY=daynumber(1,month,year);                                            //determining day of week using daynumber function
+
+
+    for(i=1;i<2;i++){
+
+    Totaldays=totaldays(month,year);                                        //determining no. of days in a certain month
+
+            printf(" \n      \t\t\t\t\t\t      %s",monthname(month));
+    printf("\n\t\t\t\t\t------------------------------------\n");
+    printf("\t\t\t\t\t  SUN  MON  TUE  WED   THU  FRI  SAT\n");
+    printf("\t\t\t\t\t------------------------------------\n");
+
+           int k;
+           printf("\t\t\t\t\t");
+
+    for(k=0;k<DAY;k++)
+           printf("     ");                                                 //printing spaces for first line of calender of each month
+
+    int j;
+    for(j=1;j<=Totaldays;j++){                                              //for loop for printing dates
+
+        printf("%5d",j);
+
+    if(++k>6){                                                              //moving to next line when days=7
+
+            k=0;
+            printf("\n\t\t\t\t\t");
+
+    }
+    }
+
+
+    if(0){
+
+        printf("\n\t\t\t\t\t");
+    }
+   DAY=k;
+
+}
+   printf("\n\t\t\t\t\t------------------------------------\n");
+   break;
+
+   //end of case======================================================================================================================
+
+
+  case 115:                                                               //case for moving to next year using s
+  case 83:
+
+
+    system("cls");
+    printf("\n\n\t\t\t\t\t     Use a to go to previous month");
+    printf("\n\t\t\t\t\t        Use d to go to next month");
+    printf("\n\t\t\t\t\t      Use w to go to previous year");
+    printf("\n\t\t\t\t\t        Use s to go to next year");
+    printf("\n\t\t\t\t\t      Press Esc to go to main menu");
+
+    year=year+1;                                                         //adding 1 to year number
+
+    printf("\n\n\n\t\t\t\t\t\t     YEAR-%d",year);
+    printf("\n\t\t\t\t\t\t    ===========");
+
+    DAY=daynumber(1,month,year);                                          //determining day of week using daynumber function
+
+
+    for(i=1;i<2;i++){
+
+    Totaldays=totaldays(month,year);                                      //determining no. of days in a certain month
+
+    printf(" \n      \t\t\t\t\t\t      %s",monthname(month));
+    printf("\n\t\t\t\t\t------------------------------------\n");
+    printf("\t\t\t\t\t  SUN  MON  TUE  WED   THU  FRI  SAT\n");
+    printf("\t\t\t\t\t------------------------------------\n");
+
+    int k;
+    printf("\t\t\t\t\t");
+    for(k=0;k<DAY;k++)
+
+        printf("     ");                                                  //printing spaces for first line of calender of each month
+
+    int j;
+    for(j=1;j<=Totaldays;j++){                                            //for loop for printing dates
+
+        printf("%5d",j);
+        if(++k>6){                                                        //moving to next line when days=7
+
+            k=0;
+            printf("\n\t\t\t\t\t");
+
+        }
+    }
+
+
+    if(0){
+
+        printf("\n\t\t\t\t\t");
+    }
+   DAY=k;
+
+}
+   printf("\n\t\t\t\t\t------------------------------------\n");
+   break;
+
+   //end of case=====================================================================================================================
+
+  case 119:                                                           //case for moving to previous year using w
+  case 87:
+
+
+    system("cls");
+    printf("\n\n\t\t\t\t\t     Use a to go to previous month");
+    printf("\n\t\t\t\t\t        Use d to go to next month");
+    printf("\n\t\t\t\t\t      Use w to go to previous year");
+    printf("\n\t\t\t\t\t        Use s to go to next year");
+    printf("\n\t\t\t\t\t      Press Esc to go to main menu");
+    year= year-1;
+
+    printf("\n\n\n\t\t\t\t\t\t     YEAR-%d",year);
+    printf("\n\t\t\t\t\t\t    ===========");
+
+    DAY=daynumber(1,month,year);                                          //determining day of week using daynumber function
+
+
+    for(i=1;i<2;i++){
+
+    Totaldays=totaldays(month,year);                                      //determining no. of days in a certain month
+
+    printf(" \n      \t\t\t\t\t\t      %s",monthname(month));
+    printf("\n\t\t\t\t\t------------------------------------\n");
+    printf("\t\t\t\t\t  SUN  MON  TUE  WED   THU  FRI  SAT\n");
+    printf("\t\t\t\t\t------------------------------------\n");
+
+    int k;
+    printf("\t\t\t\t\t");
+
+    for(k=0;k<DAY;k++)
+           printf("     ");                                                //printing spaces for first line of calender of each month
+
+    int j;
+    for(j=1;j<=Totaldays;j++){                                             //for loop for printing dates
+
+           printf("%5d",j);
+     if(++k>6){                                                            //moving to next line when days=7
+
+            k=0;
+            printf("\n\t\t\t\t\t");
+
+        }
+    }
+
+
+    if(0){
+
+        printf("\n\t\t\t\t\t");
+    }
+    DAY=k;
+
+}
+    printf("\n\t\t\t\t\t------------------------------------\n");
+    break;
+
+    //end of case=====================================================================================================================
+}
+
+
+}
+return ;  //end of function
+
+}
+
+void Calender_year(int year){
+                                                                           //function to print calender of a certain year
+
+   int Totaldays,DAY;
+   system("cls");                                                          //clearing screen
+
+   printf("\n\n\t\t\t\t\t\t     *YEAR-%d*",year);
+   printf("\n\t\t\t\t\t\t  ==================\n");
+   DAY=daynumber(1,1,year);                                                //determining day of week using daynumber function
+   int i;
+     for(i=1;i<=12;i++){                                                   //loop for printing 12 months
+
+       Totaldays=totaldays(i,year);                                        //determining no. of days in a certain month
+
+
+
+   printf("\n\t\t\t\t\t  ------------%s--------------" ,monthname(i));     //printing month name using function
+
+
+
+    printf("\n\t\t\t\t\t   SUN  MON  TUE  WED  THU  FRI  SAT");
+    printf("\n\t\t\t\t\t  ----------------------------------\n");
+
+    int k;
+    printf("\t\t\t\t\t");                                                  //for alignment
+       for(k=0;k<DAY;k++)                                                  //printing spaces for first line of calender of each month
+
+            printf("     ");
+    int j;
+      for(j=1;j<=Totaldays;j++){                                           //for loop for printing dates
+
+            printf("%5d",j);
+            if(++k>6){
+
+               k=0;                                                        //moving to next line when days=7
+               printf("\n\t\t\t\t\t");
+    }
+    }
+
+
+     if(0){
+
+            printf("\n\t\t\t\t\t");
+    }
+
+   DAY=k;                                                                   //initializing DAY
+
+            printf("\n\t\t\t\t\t ------------------------------------\n");
+    }
+
+ printf("\n\n\t\t\t\t\tPRESS ANY KEY TO EXIT");                             //going to main menu
+ return ;
+}
+
+
+void reminder(){
+    int i=1,choice=5,x,z,y, flag=0;
+
+    while(choice!=0){                                                       //using 0 as sentinel value
+
+    system("cls");
+    printf("\n\t\t\t\t\t           WELCOME TO REMINDERS");
+    printf("\n\t\t\t\t\t           ====================");
+
+    printf("\n\n\n\t\t\t\t\t\tENTER 1 TO VIEW REMINDERS");
+    printf("\n\t\t\t\t\t         ENTER 2 TO ADD REMINDERS");                //printing statements for reminder menu
+    printf("\n\t\t\t\t\t       ENTER 3 TO DELETE A REMINDER");
+    printf("\n\t\t\t\t\t             ENTER 0 TO EXIT");
+
+    printf("\n\n\t\t\t\t\t            Your choice= ");                      //getting choice from user
+    scanf("%d",&choice);
+
+    if(choice<0 || choice>3){                                               //getting value again if invalid choice is entered
+            printf("\n\t\t\t\t             INVALID CHOICE");
+            printf("\n\n\t\t\t\t         Enter choice again= ");
+            scanf("%d",&choice);
+    }
+
+
+    switch(choice){
+
+       case 1:
+            system("cls");
+            fp = fopen("reminder.txt","r");                                  //opening file in read mode
+            printf("\n\t\t\t\t============================================================");
+            printf("\n\t\t\t\tEvent No.\t\tEvent date\t\tEvent name");
+            printf("\n\t\t\t\t============================================================");
+
+          while(fread(&a, sizeof(struct Reminder), 1, fp)){                 //using read mode
+
+
+                printf("\n\t\t\t\t  %d  \t\t\t%s\t\t   %s",a.enumber,a.date,a.event); //printing record
+
+                printf("\n\t\t\t\t------------------------------------------------------------");
+
+                }
+            printf("\n\t\t\t\t============================================================");
+            fclose(fp);                                                       //closing file
+
+            getch();
+            break;
+
+//end of case============================================================================================================================
+
+       case 2:                                                                 //case for adding records
+          system("cls");
+
+            fp = fopen("reminder.txt","r");                                    //opening file in read mode to print record
+
+            printf("\n\t\t\t\t============================================================");
+            printf("\n\t\t\t\tEvent No.\t\tEvent date\t\tEvent name");
+            printf("\n\t\t\t\t============================================================");
+          while(fread(&a, sizeof(struct Reminder), 1, fp)){
+
+
+                printf("\n\t\t\t\t  %d  \t\t\t%s\t\t   %s",a.enumber,a.date,a.event);
+                printf("\n\t\t\t\t------------------------------------------------------------");
+
+                }
+                printf("\n\t\t\t\t============================================================");
+            fclose(fp);                                                            //closing file
+
+
+
+            printf("\n\n\t\t\t\t\t\t  DON'T REPEAT EVENT NUMBER");
+            fp = fopen("reminder.txt","a+");                                       //opening file in append mode
+
+            printf("\n\n\t\t\t\t\t\t\tADD REMINDERS");
+            printf("\n\t\t\t\t\t\t\t=============");
+
+
+          while(i!=0){                                                             //using 0 as sentinel value to exit loop
+
+                printf("\n\n\t\t\t\tEnter event number= ");
+                scanf("%d", &a.enumber);
+                fflush(stdin);
+                printf("\n\t\t\t\tEnter event date (DD MM YYYY)= ");               //getting input and flushing before getting a string
+                gets(a.date);
+                fflush(stdin);
+                printf("\n\t\t\t\tEnter event name : ");
+                gets(a.event);
+
+            fwrite(&a,sizeof(a),1,fp);                                             //writing in file
+
+                printf("\n\t\t\t\tEnter 0 to exit or any number to continue ");
+                scanf("%d",&i);                                                    //getting input to check wether user wants to continue
+}
+            i=1;
+            fclose(fp);
+            break;
+//end of case==========================================================================================================================
+
+       case 3:                                                                      //case for deleting records
+
+            system("cls");
+            fp = fopen("reminder.txt","r");                                         //opening file in read mode to print records
+            printf("\n\t\t\t\t============================================================");
+            printf("\n\t\t\t\tEvent No.\t\tEvent date\t\tEvent name");
+            printf("\n\t\t\t\t============================================================");
+
+            while(fread(&a, sizeof(struct Reminder), 1, fp)){
+
+
+                printf("\n\t\t\t\t  %d  \t\t\t%s\t\t   %s",a.enumber,a.date,a.event);
+                printf("\n\t\t\t\t------------------------------------------------------------");
+
+                }
+                printf("\n\t\t\t\t============================================================");
+
+            fclose(fp);                                                               //closing file
+
+
+
+           fp= fopen("reminder.txt","r");                                             //opening first file in read mode
+           fp2 =fopen("reminder2.txt","w");                                           //opening another file in write mode
+
+           printf("\n\n\t\t\t\t\t\t    DELETE REMINDERS");
+           printf("\n\t\t\t\t\t\t    ================");
+
+
+
+           printf("\n\n\t\t\t\tEnter any event number displayed above= ");           //asking what record user wants to delete
+           scanf("%d",&z);
+
+           flag=0;                                                                   //using flag variable to check if record exists
+           while(fread(&a,sizeof(a),1,fp)){
+
+            if(z!=a.enumber){                                                        //also checking if such record exists
+
+                fwrite(&a,sizeof(a),1,fp2);                                          //writing all records except user chosen,in new file
+            }
+            else{
+                printf("\n\n\t\t\t\t\t\tRECORD DELETED SUCCESSFULLY");
+                printf("\n\t\t\t\t\t\t===========================");
+                flag=1;
+            }
+           }
+
+           fclose(fp);                                                                //closing both files
+           fclose(fp2);
+           remove("reminder.txt");                                                    //deleting first file
+           rename("reminder2.txt","reminder.txt");                                    //renaming second file
+
+
+           fp=fopen("reminder","r");
+
+
+
+           if(flag==0)
+           {
+               printf("\n\n\t\t\t\t\t\t  NO SUCH RECORD FOUND");
+               printf("\n\t\t\t\t\t\t  ====================");
+           }
+           getch();
+           fclose(fp);
+
+
+       break;
+
+//end of case==========================================================================================================================
+
+     case 0:                                                                            //case to exit loop
+
+        break;
+    }
+}}
+
+int  main(){
+
+   int m,y,i=8;
+
+
+  while(i!=0){
+
+    system("cls");
+    printf("\n\n\t\t\t\t\t\t     WELCOME TO CALENDAR");
+    printf("\n\t\t\t\t\t\t     ===================");
+    printf("\n\n\n\t\t\t\t\tPRESS 1 TO DISPLAY CALENDER OF COMPLETE YEAR");
+    printf("\n\n\t\t\t\t\tPRESS 2 TO DISPLAY CALENDAR OF A SPECIFIC MONTH"); //printing statements for main menu
+    printf("\n\n\t\t\t\t\tPRESS 3 TO GO TO TO REMINDERS MENU ");
+    printf("\n\n\t\t\t\t\tPRESS 0 TO EXIT");
+
+
+   printf("\n\n\n\n\t\t\t\t\t\t   Your choice= ");                           //getting user choice
+   scanf("%d",&i);
+
+   system("cls");
+
+   switch(i){
+
+case 1:                                                                      //printing calendar of complete year
+    system("cls");
+    printf("\n\n\t\t\t\t\tDISPLAYING CALENDAR OF COMPLETE YEAR");
+    printf("\n\t\t\t\t\t------------------------------------");
+    printf("\n\n\n\t\t\t\t\tEnter year= ");
+    scanf("%d",&y);
+    Calender_year(y);                                                        //calling function
+    getch();
+    break;
+
+case 2:                                                                      //calling func. of calendar of specific month of specific year
+    system("cls");
+    printf("\n\n\t\t\t\t\tDISPLAYING CALENDAR OF A SPECIFIC MONTH");
+    printf("\n\t\t\t\t\t---------------------------------------");
+
+
+    printf("\n\n\n\t\t\t\t\t    Enter month and year (MM YYYY)= ");
+    scanf("%d %d",&m,&y);
+
+    calender_month(m,y);                                                      //calling function
+
+    break;
+
+
+case 3:                                                                    //calling reminder functions
+    system("cls");
+    printf("\n\n\t\t\t\t\tREMINDERS");
+    printf("\n\t\t\t\t\t-----------");
+
+    reminder();
+    break;
+
+
+}
+}
+}
